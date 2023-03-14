@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>All Restaurant Details</title>
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="fooditems.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<style>
+.navbar1 {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.dropdown1 .dropbtn1 {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	transform: skewX(10deg) translateX(0);
+	transform: skewX(25deg) rotate(3deg);
+	color: white;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content1 {
+	display: none;
+	position: absolute;
+	transform: skewX(25deg) translateX(0);
+	background-color: #ffcccc;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content1 a {
+	float: none;
+	color: red;
+	transform: skewX(10deg) translateX(0);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content1 a:hover {
+	transform: skewX(5deg) translateX(0);
+	background-color: #cab6eb;
+}
+
+.dropdown1:hover .dropdown-content1 {
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div class="header">
+		<a href="http://localhost:8081/dashboard" class="active">Home</a> <a
+			href="http://localhost:8081/restaurants">Restaurants</a> <a
+			href="http://localhost:8081/contactus">Contact us</a>
+
+		<div class="a">
+
+			<font color=white><a th:href="@{login}"
+				th:each="user: ${loki}" th:text="${user}"></a></font>
+			<div class="navbar1 search">
+
+
+				<div class="dropdown1">
+					<button class="dropbtn1">
+						<lable id="naveen" th:each="user: ${username}" th:text="${user}">
+						</lable>
+
+					</button>
+					<div class="dropdown-content1">
+
+						<a th:href="@{/LogOut}">Logout</a>
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<h1>List Restaurant</h1>
+		</div>
+
+		<a th:href="@{/RestaurantRegistration}"
+			class="btn btn-primary btn-sm mb-3">Add Restaurant</a>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+
+					<th>Restaurant Name</th>
+					<th>Restaurant Number</th>
+					<th>Restaurant ratings</th>
+					<th>Restaurant Address</th>
+					<th>Pin Code</th>
+					<th>land mark</th>
+					<th>images</th>
+					<th>Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="restaurant:${restaurants}">
+					<td th:text="${restaurant.name}"></td>
+					<td th:text="${restaurant.number}"></td>
+					<td th:text="${restaurant.ratings}"></td>
+					<td th:text="${restaurant.address}"></td>
+					<td th:text="${restaurant.pincode}"></td>
+					<td th:text="${restaurant.landmark}"></td>
+					<td><img
+						th:src="'data:image/jpeg;base64,' + ${restaurant.images}"
+						width="100px" height="100px" /></td>
+					<td><a
+						th:href="@{/showFormForUpdate/{id}(id=${restaurant.id})}"
+						class="btn btn-primary" href="/contact">Update</a> <a
+						th:href="@{/DeleteEmployee/{id}(id=${restaurant.id})}"
+						class="btn btn-danger" href="/contact">Delete</a></td>
+
+				</tr>
+			</tbody>
+
+		</table>
+</body>
+</html>

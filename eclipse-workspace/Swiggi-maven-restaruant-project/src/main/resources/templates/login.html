@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="fooditems.css">
+<meta charset="ISO-8859-1">
+<title>Login Form</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<style>
+body {
+	background-position: center;
+	background-image:
+		url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_960_720.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+div.ralative {
+	position: relative;
+	top: 200px;
+	left: 450px;
+	right: 50px;
+	width: 600px;
+	height: 300px;
+}
+
+input[type=text], input[type=number], input[type=email], input[type=password]
+	{
+	width: 100%;
+	padding: 2px 20px;
+	margin: 4px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.active {
+	background-color: #ada06c;
+	color: #ede9b4;
+}
+
+.header a {
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 11px 18px;
+	text-decoration: none;
+}
+
+.a {
+	float: right;
+}
+
+.dropdown {
+	float: left;
+	overflow: hidden;
+}
+
+.header a:hover, .dropdown:hover .dropbtn {
+	background-color: #cab6eb;
+}
+
+.content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .content {
+	display: block;
+}
+
+.search {
+	float: right;
+	padding: 4px;
+	margin-top: 6px;
+	margin-right: 50px;
+	border: none;
+	border-radius: 4px;
+	font-size: 17px;
+}
+
+.search1 {
+	float: right;
+	padding: 0px;
+	margin-top: 10px;
+	margin-right: -10px;
+	border: none;
+	border-radius: 4px;
+	font-size: 17px;
+}
+</style>
+</head>
+<body>
+	<div class="header">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> <a
+			href="http://localhost:8080/restaurants">Restaurants</a> <a
+			href="http://localhost:8080/contactus">Contact us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/user">New ? --Create
+				a new account &nbsp;&nbsp;</a>
+		</div>
+	</div>
+	<div align="right" style="color: blue"></div>
+	<div class="ralative">
+		<div
+			class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+			<h3>Login Form</h3>
+
+			<form th:action="@{/Login}" method="post"
+				style="margin: auto; width: 220px;">
+
+				<font color="red"> <lable th:each="user: ${login}"
+						th:text="${user}"></lable></font>
+
+				<div class="row">
+					<label>User Name </label> <input type="email" id="naveen"
+						name="email" placeholder="Enter User Name" th:required="required"
+						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+
+				</div>
+				<div class="row">
+					<label>Password </label> <input type="password" name="password"
+						placeholder="Enter Password" th:required="required"
+							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+				</div>
+				<br>
+				<div class="row button">
+					<input type="submit" onclick="myFunction()" value="Submit"
+						class="btn btn-primary">
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		function myFunction() {
+			let text = document.getElementById("naveen").value;
+			document.getElementById("demo1").innerHTML = "User Name or Password Is Incorrect ";
+		}
+	</script>
+
+</body>
+</html>

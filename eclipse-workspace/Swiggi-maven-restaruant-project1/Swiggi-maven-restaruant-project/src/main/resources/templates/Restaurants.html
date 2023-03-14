@@ -1,0 +1,405 @@
+<html>
+<head>
+<link rel="stylesheet" href="styles.css">
+<style type="text/css">
+
+.red{
+	font-style: italic;
+}
+
+table{
+	font-style:oblique;
+	font-size: 120%;
+	
+}
+.links
+{
+background-color:rgb(64, 0, 0);
+color:white;
+}
+.color{
+	font-style: italic;
+	text-align:center;
+	color: green;
+}
+.links
+{
+transition:transform 0.5s;
+}
+.links:hover
+{
+transform:scale(1.05);
+opacity : 0.7;
+}
+#zoom
+{
+transition:transform 0.5s;
+}
+#zoom:hover
+{
+transform:scale(1.05);
+opacity : 0.7;
+border-radius: 15px
+}
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+.active {
+  background-color:#ada06c;
+  color:#ede9b4;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.a{
+   float: right;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.colo{
+	color: orange;
+}
+
+.dropdown .dropbtn {
+	text-align:center;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: orange;
+  padding: 18px 20px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color:#cab6eb;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+ 
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.menu{
+	size: 20px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.column {
+  float: left;
+  width: 28%;
+  padding-left: 50px;
+  padding-top: 10px;
+ text-align: center;
+}
+.search {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  border-radius:4px;
+  font-size: 17px;
+}
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 15px;
+ 
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height:15px;
+  width: 12px;
+  left: 3px;
+  bottom: px; 
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #49c542;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+.slider.round {
+  border-radius: 20px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+.d{
+  padding-right: 10px;
+  padding-top: 30px;
+  font-size: 15px;
+  
+  position: relative;
+	text-align:center;
+	top: 10px;
+	left: 5px;
+	
+	
+}
+.exp{
+
+	 position: relative;
+	text-align:center;
+	top: 100px;
+	left: 5px;
+	
+}
+
+</style>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+</head>
+<body>
+	<div class="navbar">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a>
+		 <a href="http://localhost:8080/contactus">Contact Us</a> 
+			<a href="http://localhost:8080/RestaurantRegistration">Add Restaurant</a> 
+			 
+			  <a th:href="@{/AllRestaurant}" >All Restaurants</a> <a th:href="@{/AddDish}"
+			class="btn btn-primary btn-sm mb-3">Add dishes</a> <a
+			th:href="@{/Alldishes}" class="btn btn-primary btn-sm mb-3">All dishes</a>
+
+
+		<div class="a">
+
+			<a class="color" href="http://localhost:8080/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+		<input type="text" class="search" placeholder="Search..">
+	</div>
+	
+
+	
+	<div align="right">
+
+		<label class="switch"> 
+		
+		<input type="checkbox" id="switch1"
+			onclick="myFunction()" name="veg" value="veg">
+
+			<span class="slider round"> </span>
+		</label><span class="d"> Veg</span>
+		
+		<label class="switch">
+		
+		 <input
+			type="checkbox" id="switch2" name="veg" value="veg" onclick="myFunction()">
+			<span class="slider round"></span>
+		</label><span class="d">Non veg</span>
+	</div>
+	
+
+	<h1 class="color">All Available Restaurants</h1>
+	<form th:object="${dishImages}" method="post">
+	
+					
+	
+	
+	
+		
+	
+
+	
+	<div class="red">
+		<div id="myDIV2">
+			<div class="row">
+				<div class="column" id="zoom">
+					<a href="http://localhost:8080/item">
+   <img  th:src="'data:image/jpeg;base64,' + ${dishImages.images}" width="300px" height="200px"/></a>
+				</div>
+				<div class="column" id="zoom">
+					<a href="http://localhost:8080/item"> <img
+						src="https://www.sandyathome.com/wp-content/uploads/2019/09/gobi-65-rice.jpg"
+						alt="Forest" style="width: 100%"></a>
+				</div>
+				<div class="column" id="zoom">
+					<a href="http://localhost:8080/item"><img
+						src="https://thumbs.dreamstime.com/b/south-indian-meals-served-banana-leaf-traditional-cuisine-57372380.jpg"
+						alt="Mountains" style="width: 90%"></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column">
+                      	 <b> <div th:text="*{dishname}"></div> </div></b></h2> 
+				
+				</div>
+				<div class="column">
+					<b>Fast food center,bangalore</b>
+				</div>
+				<div class="column">
+					<b>Family Food items with best dishes,bangalore</b>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column">
+					<font color="green">The Burning Brownie. </font>
+				</div>
+				<div class="column">
+					<font color="green">Meat You There. </font>
+				</div>
+				<div class="column">
+					<font color="green">Signature Cuisine. </font>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column" id="column">
+					<font color="green">Price: INR  <lable th:text="*{price}"></lable></font>
+				</div>
+				<div class="column">
+					<font color="green">Price: INR 270/-</font>
+				</div>
+				<div class="column">
+					<font color="green">Price: INR 200/-</font>
+				</div>
+			</div>
+		</div>
+		<div id="myDIV">
+			<div class="row">
+				<div class="column" id="zoom">
+					<a href="http://localhost:8080/item"><img
+						src="https://media.istockphoto.com/photos/biryani-picture-id1305452646?s=612x612"
+						width="85%"></a>
+				</div>
+				<div class="column" id="zoom">
+					<a href="http://localhost:8080/item"><img
+						src="https://image.shutterstock.com/image-photo/chicken-skew-kebabtraditional-indian-dish-260nw-549085792.jpg"
+						width="85%"></a>
+				</div>
+				<div class="column" id="zoom">
+					<a href="http://localhost:8080/item"><img
+						src="https://www.spiceeats.com/wp-content/uploads/2021/05/Simple-Chicken-Fry.jpg"
+						width=90%></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column">
+					<font size="4"><b> Home Food, North Indian Near Sarakki
+							Signal road, J. P. Nagar | Change Outlet,bangalore</b> </font>
+				</div>
+				<div class="column">
+					<font size="4"><b>Home Food, North Indian flavourful and
+							diverse,bangalore</b></font>
+				</div>
+				<div class="column">
+					<font size="4"><b>Spicy, rich, flavourful and
+							diverse,bangalore</b></font>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column">
+					<font color="green">The Burning Brownie. </font>
+				</div>
+				<div class="column">
+					<font color="green">Emerald Grill. </font>
+				</div>
+				<div class="column">
+					<font color="green">The Golden Era. </font>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column" id="column">
+					<font color="green">Price: INR 220/-</font>
+				</div>
+				<div class="column">
+					<font color="green">Price: INR 150/-</font>
+				</div>
+				<div class="column">
+					<font color="green">Price: INR 220/-</font> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		</form>
+		<script type="text/javascript">
+		
+		function myFunction() {
+
+			var switchOneValue = document.getElementById("switch1").checked;
+			var switchTwoValue = document.getElementById("switch2").checked;
+
+			if ((switchOneValue == true && switchTwoValue == true) || (switchOneValue == false && switchTwoValue == false)) {
+				document.getElementById("myDIV").style.display = "block";
+				document.getElementById("myDIV2").style.display = "block";
+			} else if (switchOneValue == true && switchTwoValue == false) {
+				document.getElementById("myDIV").style.display = "none";
+				document.getElementById("myDIV2").style.display = "block";
+			} else if (switchOneValue == false && switchTwoValue == true) {
+				document.getElementById("myDIV").style.display = "block";
+				document.getElementById("myDIV2").style.display = "none";
+			}
+
+		}
+		
+		</script>
+		<script src="restaurant.js"></script>
+</body>
+</html>

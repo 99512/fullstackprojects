@@ -1,0 +1,713 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Food Items</title>
+<link rel="stylesheet" href="items.css">
+<style type="text/css">
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.head {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.active {
+	background-color: #ada06c;
+	color: #ede9b4;
+}
+
+.head a {
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 11px 18px;
+	text-decoration: none;
+}
+
+.a {
+	float: right;
+}
+
+.dropdown {
+	float: left;
+	overflow: hidden;
+}
+
+.head a:hover, .dropdown:hover .dropbtn {
+	background-color: #cab6eb;
+}
+
+.content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.content a:hover {
+	background-color: #ddd;
+}
+
+.dropdown:hover .content {
+	display: block;
+}
+
+.show {
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.palce {
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.food {
+	width: 70%;
+	height: 95%;
+	background-color: #ffffff;
+	
+	border-radius: 20px;
+	box-shadow: 0px 25px 40px #1687d933;
+}
+
+.style {
+	margin: auto;
+	width: 90%;
+	height: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.Heading {
+	font-size: 20px;
+	font-family: ‘Open Sans’;
+	font-weight: 700;
+	color: #2F3841;
+}
+
+.Action {
+	font-size: 14px;
+	font-family: ‘Open Sans’;
+	font-weight: 600;
+	color: #E44C4C;
+	cursor: pointer;
+	border-bottom: 1px solid #E44C4C;
+}
+
+.Cart-Items {
+	margin: auto;
+	width: 90%;
+	height: 30%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.image-box {
+	width: 15%;
+	text-align: center;
+}
+
+.about {
+	height: 100%;
+}
+
+.title {
+	padding-top: 5px;
+	line-height: 10px;
+	font-size: 32px;
+	font-family: ‘Open Sans’;
+	font-weight: 800;
+	color: #202020;
+}
+
+.subtitle {
+	line-height: 10px;
+	font-size: 18px;
+	font-family: ‘Open Sans’;
+	font-weight: 600;
+	color: #909090;
+}
+
+.counter {
+	width: 15%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	font-family: ‘Open Sans’;
+	font-weight: 900;
+	color: #202020;
+	cursor: pointer;
+}
+
+.count {
+	font-size: 20px;
+	font-family: ‘Open Sans’;
+	font-weight: 900;
+	color: #202020;
+}
+
+.prices {
+	height: 100%;
+	text-align: right;
+}
+
+.amount {
+	padding-top: 20px;
+	font-size: 26px;
+	font-family: ‘Open Sans’;
+	font-weight: 800;
+	color: #202020;
+}
+
+.save {
+	padding-top: 5px;
+	font-size: 14px;
+	font-family: ‘Open Sans’;
+	font-weight: 600;
+	color: #1687d9;
+	cursor: pointer;
+}
+
+.remove {
+	padding-top: 5px;
+	font-size: 14px;
+	font-family: ‘Open Sans’;
+	font-weight: 600;
+	color: #E44C4C;
+	cursor: pointer;
+}
+
+hr {
+	width: 66%;
+	float: right;
+	margin-right: 5%;
+}
+
+.checkout {
+	float: right;
+	margin-right: 5%;
+	width: 28%;
+}
+
+.total {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.Subtotal {
+	font-size: 22px;
+	font-family: ‘Open Sans’;
+	font-weight: 700;
+	color: #202020;
+}
+
+.itemss {
+	font-size: 16px;
+	font-family: ‘Open Sans’;
+	font-weight: 500;
+	color: #909090;
+	line-height: 10px;
+}
+
+.total-amount {
+	font-size: 36px;
+	font-family: ‘Open Sans’;
+	font-weight: 900;
+	color: #202020;
+}
+
+.button {
+	margin-top: 5px;
+	width: 100%;
+	height: 40px;
+	border: none;
+	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: ‘Open Sans’;
+	font-weight: 600;
+	color: #202020;
+}
+
+.navbar1 {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.dropdown1 .dropbtn1 {
+	padding-top: 7px;
+	padding-right: 50px;
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content1 {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content1 a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content1 a:hover {
+	background-color: #ddd;
+}
+
+.dropdown1:hover .dropdown-content1 {
+	display: block;
+}
+
+.butto1 {
+	background-color: red; /* Green */
+	border: none;
+	color: white;
+	padding-left: 10px;
+	padding: 1px 3px;
+	border-radius: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.butto {
+	background-color: #5fa5b1; /* Green */
+	border: none;
+	color: white;
+	padding-left: 10px;
+	padding: 1px 3px;
+	border-radius: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.order {
+	text-align: center;
+	color: blue;
+}
+</style>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+</head>
+
+
+<body>
+	<div>
+
+		<div class="head">
+			<a href="http://localhost:8080/dashboard" class="active">Home</a> <a
+				href="http://localhost:8080/restaurants">Restaurants</a> <a
+				href="http://localhost:8080/contactus">Contact us</a>
+			<div class="a">
+
+				<font color=white><a href="http://localhost:8080/login"
+					th:each="user: ${loki}" th:text="${user}"></a></font>
+				<div class="navbar1 search">
+
+
+					<div class="dropdown1">
+						<button class="dropbtn1">
+							<lable id="naveen" th:each="user: ${username}" th:text="${user}">
+							</lable>
+
+						</button>
+						<div class="dropdown-content1">
+
+							<a th:href="@{/LogOut}">Logout</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="order" th:each="user: ${validation}" th:text="${user}">
+	</div>
+
+	<form th:each="CartPageDatails,iterStat:${cart}"
+		th:if="${iterStat.index} <1">
+
+
+
+		<div class=show>
+
+
+			<div class="food">
+
+				<div class="style">
+
+					<h3 class="Heading">Shopping Cart</h3>
+
+				</div>
+				<div id="data">
+					<div class="Cart-Items">
+						<div class="image-box">
+							<a href="http://localhost:8080/dishAddition"> <img
+								th:src="'data:image/jpeg;base64,' + ${CartPageDatails.cart_dish_image}"
+								height="120px" /></a>
+						</div>
+						<div class="about">
+							<br>
+							<h1 class="title">
+								<lable th:text="${CartPageDatails.dish_name}">
+								</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+							</h1>
+							&#x20b9;
+							<lable th:text="${CartPageDatails.cart_price}"></lable>
+
+							<br>
+
+
+							<h3 class="subtitle">One Plate</h3>
+							<img
+								src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+								height="30px" /><br> <a
+								th:href="@{/deletecart/{id}(id=${CartPageDatails.item_id})}"
+								href="/contact">Delete</a>
+						</div>
+						<div class="counter">
+							<input type="button" value="+" id="inc" onclick="incNumber1()" />
+							<label id="display1">1</label> <input type="button" value="-"
+								id="dec" onclick="decNumber1()" />
+						</div>
+						<div class="prices">
+
+							<br>
+							<br>
+							<div class="amount">
+								&#x20b9; <label id="displayA"><label id="dis"></label></label>
+							</div>
+
+						</div>
+					</div>
+					</from>
+					<form th:each="dish,iterStat:${cart}"
+						th:if="${iterStat.index} >=1 and ${iterStat.index} <2">
+						<div class="Cart-Items">
+							<div class="image-box">
+
+								<a href="http://localhost:8080/dishAddition"> <img
+									th:src="'data:image/jpeg;base64,' + ${dish.cart_dish_image}"
+									height="120px" /></a>
+							</div>
+							<div class="about">
+								<br>
+								<h1 class="title">
+									<lable th:text="${dish.dish_name}">
+									</label>
+								</h1>
+								&#x20b9;
+								<lable th:text="${dish.cart_price}"></lable>
+
+								<br>
+
+								<h3 class="subtitle">One Plate</h3>
+								<img
+									src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+									height="30px" /> <br> <a
+									th:href="@{/deletecart/{id}(id=${dish.item_id})}"
+									href="/contact">Delete</a>
+
+							</div>
+							<div class="counter">
+								<input type="button" value="+" id="inc" onclick="incNumber2()" />
+								<label id="display2">1</label> <input type="button" value="-"
+									id="dec" onclick="decNumber2()" />
+							</div>
+							<div class="prices">
+								<br>
+								<br>
+								<div class="amount">
+
+									<b>&#x20b9; <label id="displayB"><label id="dis1"></label></label></b>
+								</div>
+							</div>
+						</div>
+						<form th:each="dish,iterStat:${cart}"
+							th:if="${iterStat.index} >=2 and ${iterStat.index} <3">
+							<div class="Cart-Items">
+								<div class="image-box">
+									<a href="http://localhost:8080/dishAddition"> <img
+										th:src="'data:image/jpeg;base64,' + ${dish.cart_dish_image}"
+										height="120px" /></a>
+								</div>
+								<div class="about">
+									<br>
+									<h1 class="title">
+										<lable th:text="${dish.dish_name}">
+										</label>
+									</h1>
+									&#x20b9;
+									<lable th:text="${dish.cart_price}"></lable>
+									<br>
+
+									<h3 class="subtitle" onclick="show()">One Plate</h3>
+									<img
+										src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+										height="30px" /> <br> <a
+										th:href="@{/deletecart/{id}(id=${dish.item_id})}"
+										href="/contact">Delete</a>
+								</div>
+								<div class="counter">
+									<input type="button" value="+" id="inc" onclick="incNumber3()" />
+									<label id="display3">1</label> <input type="button" value="-"
+										id="dec" onclick="decNumber3()" />
+								</div>
+
+
+								<div class="prices">
+									<br>
+									<br>
+
+									<div class="amount">
+										&#x20b9; <label id="displayC">250</label>
+									</div>
+
+								</div>
+							</div>
+				</div>
+				<hr>
+				<div class="checkout">
+					<div class="total">
+						<div>
+							<br>
+							<div class="Subtotal">Sub-Total</div>
+						</div>
+						<div class="total-amount">
+							&#x20b9; <label id="displayD"><label id="dis4"></label></label>
+						</div>
+					</div>
+					<button class="button" onclick="thisFunction()">
+						<a th:href="@{/dashboard}">Checkout</a>
+					</button>
+				</div>
+
+			</div>
+
+			<div th:each="dish:${price}"></div>
+			<div th:each="user: ${price1}"></div>
+			<div th:each="user1: ${price2}"></div>
+        <div th:each="user1: ${amount}" ></div>
+      
+			<script th:inline="javascript">
+				
+			</script>
+
+
+
+			<script type="text/javascript" th:inline="javascript">
+				/*<![CDATA[*/
+
+				var message = /*[[${price}]]*/'default';
+
+				console.log(message);
+
+				/*]]>*/
+
+				/*<![CDATA[*/
+
+				var message1 = /*[[${price1}]]*/'default';
+
+				console.log(message1);
+
+				/*]]>*/
+
+				/*<![CDATA[*/
+
+				var message2 = /*[[${price2}]]*/'default';
+
+				console.log(message2);
+
+				/*]]>*/
+				
+				/*<![CDATA[*/
+
+				var amount = /*[[${amount}]]*/'default';
+
+				console.log(amount);
+
+				/*]]>*/
+const n=amount;
+				message4 = 1 * message + 1 * message1 + 1 * message2;
+
+				document.getElementById("dis4").innerHTML = message4;
+               
+				document.getElementById("dis").innerHTML = message;
+				document.getElementById("dis1").innerHTML = message1;
+				
+				if(amount==null){
+					var m=1;
+					document.getElementById("amount").innerHTML = amount;
+				}
+				else{
+					document.getElementById("amount").innerHTML = amount;
+				}
+				
+				
+				function loki() {
+					if (confirm("Are you sure you want to remove this item?") == true) {
+
+						document.getElementById("data").style.display = "none";
+
+					}
+				}
+
+				var i = 1;
+
+				function incNumber1() {
+					if (i < 10) {
+						i++;
+					} else if (i = 10) {
+						i = 1;
+					}
+					document.getElementById("display1").innerHTML = i;
+					document.getElementById("displayA").innerHTML = i * message;
+					document.getElementById("displayD").innerHTML = i * message
+							+ j * message1 + k * message2;
+				}
+
+				function decNumber1() {
+					if (i > 1) {
+						--i;
+					} else if (i = 0) {
+						i = 10;
+					}
+					document.getElementById("display1").innerHTML = i;
+					document.getElementById("displayA").innerHTML = i * message;
+					document.getElementById("displayD").innerHTML = i * message
+							+ j * message1 + k * message2;
+				}
+
+				var j = 1;
+				function incNumber2() {
+					if (j < 10) {
+						j++;
+					} else if (j = 10) {
+						j = 1;
+					}
+					document.getElementById("display2").innerHTML = j;
+					document.getElementById("displayB").innerHTML = j
+							* message1;
+					document.getElementById("displayD").innerHTML = i * message
+							+ j * message1 + k * message2;
+
+				}
+
+				function decNumber2() {
+					if (j > 0) {
+						--j;
+					} else if (j = 0) {
+						j = 10;
+					}
+					document.getElementById("display2").innerHTML = j;
+					document.getElementById("displayB").innerHTML = j
+							* message1;
+					document.getElementById("displayD").innerHTML = i * message
+							+ j * message1 + k * message2;
+				}
+
+				var k = 1;
+				function incNumber3() {
+					if (k < 10) {
+						k++;
+					} else if (k = 10) {
+						k = 1;
+					}
+					document.getElementById("display3").innerHTML = k;
+					document.getElementById("displayC").innerHTML = k
+							* message2;
+					document.getElementById("displayD").innerHTML = i * message
+							+ j * message1 + k * message2;
+				}
+
+				function decNumber3() {
+					if (k > 0) {
+						--k;
+					} else if (k = 0) {
+						k = 10;
+					}
+					document.getElementById("display3").innerHTML = k;
+					document.getElementById("displayC").innerHTML = k
+							* message2;
+					document.getElementById("displayD").innerHTML = i * message
+							+ j * message1 + k * message2;
+				}
+
+				function add() {
+					a = i * 250 + j * 270 + k * 200;
+					document.getElementById("loki").innerHTML = a;
+				}
+
+				function thisFunction() {
+
+					alert("Your order successfully registered")
+
+				}
+			</script>
+	</form>
+	</div>
+</body>
+
+</html>

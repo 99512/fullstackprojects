@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="user.css">
+<meta charset="ISO-8859-1">
+<title>User Management System</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="fooditems.css">
+
+</head>
+<body onload='document.form1.text1.focus()'>
+	<div class="header">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> <a
+			href="http://localhost:8080/restaurants">Restaurants</a> <a
+			href="http://localhost:8080/contactus">Contact Us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+
+	</div>
+	<BR>
+	<div align="center" width=25%>
+		<div class=size>
+
+			<div>
+				<div>
+
+					<form action="#" th:action="@{/saveuser}" th:object="${user}"
+						name="form1" method="post">
+						<h2 align="center" style="color: orange;">User login Form</h2>
+
+						<label class="float-left red">User First name</label>
+						<div>
+
+
+							<input type="text" th:field="*{firstname}" id="UserName"
+								required="required" maxlength="50" minlength="4"
+								data-minlength="4" placeholder="Enter First Name">
+						</div>
+						<label class="float-left red">User Last Name</label>
+						<div>
+
+							<input type="text" th:field="*{lastname}" id="UserName"
+								maxlength="20" minlength="4" placeholder="Enter Last Name">
+						</div>
+						<label class="float-left red">Pin Code</label>
+						<div>
+							<input type="text" th:field="*{pincode}" id="UserName"
+								required="required" maxlength="6" minlength="6"
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+								placeholder="Enter Pin Code">
+						</div>
+						<label class="float-left red">Land Mark</label>
+						<div>
+							<input type="text" th:field="*{landmark}" required="required"
+								maxlength="50" minlength="4" placeholder="Enter Land Mark">
+						</div>
+						<label class="float-left red">Email</label>
+						<div>
+							<input type="text" id="UserName" name='text1' th:field="*{email}"
+								required="required"
+								title="Must contain at least one three leters "
+								placeholder="Email"
+								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+
+						</div>
+
+						<label class="float-left red">Phone Number</label>
+						<div>
+							<input type="text" th:field="*{phoneNumber}" required="required"
+								maxlength="14"
+								oninput="this.value = this.value.replace(/[^0-9.+ ]/g, '').replace(/(\..*?)\..*/g, '$1');"
+								placeholder="Enter Phone number"
+								title="please enter a valid number a number with country key word. It must has have length 10 ">
+						</div>
+						<label class="float-left red">User Password</label>
+						<div>
+
+							<input type="password" id="UserName" placeholder="Enter PassWord"
+								th:field="*{password}" name="psw"
+								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+								title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+								required>
+						</div>
+						<label class="float-left red">Address</label>
+						<div>
+							<input type="text" th:field="*{adress}" required="required"
+								placeholder="Enter Address">
+						</div>
+						<label class="float-left red">Submit</label><br>
+						<div>
+							<input type="submit" class="float-left ">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("input#UserName").on({
+			keydown : function(e) {
+
+				return e.trim();
+			},
+			change : function() {
+				this.value = this.value.replace(/\s/g, "");
+			}
+		});
+	</script>
+
+
+</body>
+</html>

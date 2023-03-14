@@ -1,0 +1,104 @@
+
+
+
+
+
+
+
+
+
+body table {
+   color:white;
+    width: 40%;
+}
+.red{color:white;
+text-align: left;
+
+}
+body{
+	background-image:
+		url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_960_720.jpg');
+		background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+h2{
+    color:orange;
+    background-size: 50%;
+}
+
+    table.list {
+        width: 90%;
+   }
+
+
+
+tr:nth-child(even), table.list thead > tr {
+    background-color: #dddddd;
+}
+
+input[type=text],input[type=email],input[type=password]{
+width: 100%;
+    padding: 6px 20px;
+ 
+   
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+
+ .size {
+ 
+    width: 25%;
+    padding: 14px 20px;
+ 
+   
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 50%;
+    background-color: #ddd;
+    color: #000;
+    padding: 6px 20px;
+    margin: 8px,0;
+    
+	
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+select {
+    width: 102%;
+    
+    color: #000;
+    padding: 6px 20px;
+    margin: 8px,0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+from div.form-action-buttons {
+    text-align: right;
+}
+a {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000ee;
+    margin-left: 4px;
+}
+
+label.validation-error {
+    color: red;
+    margin-left: 5px;
+}
+.hide {
+    display: none;
+}

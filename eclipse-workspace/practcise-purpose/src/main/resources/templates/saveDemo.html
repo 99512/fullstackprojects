@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+crossorigin="anonymous">
+
+
+</head>
+<body >
+
+<div  class= "container">
+    <h2 align="center" class="p-3 mb-2 bg-success text-white">Lokesh  System</h2>
+    <hr>
+    <h2>Saving purpose</h2>
+    
+    <div class="col-md-12 text-center">
+    
+    <form action="#" th:action="@{/savedemo}" th:object="${practise}" method="post">
+    
+       
+    <div  class="row">
+    <div>Enter name</div>&nbsp; &nbsp;
+     <input type="text" th:field ="*{name}"  required="required" maxlength="15" data-minlength="4"
+              placeholder="Employee First Name" class="form-control mb-4 col-4">
+              
+              &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;
+              <div>Enter Email</div>&nbsp; &nbsp;
+                <input type="text" th:field ="*{email}"   data-inline = "true"
+              placeholder="Employee Last Name" class="form-control mb-4 col-4">
+    </div>
+         
+       
+       
+              <div  class="container">
+              <button type="submit" class="btn btn-info col-2 float-right">Save My project</button>
+          
+          </div>
+           
+    
+    
+     </form>
+
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="fooditems.css">
+<title>Dish Registration Form</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+.red {
+	color: white;
+	text-align: left;
+}
+
+body {
+	background-image:
+		url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_960_720.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+h2 {
+	color: orange;
+}
+
+select {
+	width: 102%;
+	color: #000;
+	padding: 6px 19px;
+	margin: 8px, 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 6px 20px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.size {
+	width: 34%;
+	padding: 25px 50px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+</style>
+<style>
+.navbar1 {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.dropdown1 .dropbtn1 {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	transform: skewX(10deg) translateX(0);
+	transform: skewX(25deg) rotate(3deg);
+	color: white;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content1 {
+	display: none;
+	position: absolute;
+	transform: skewX(25deg) translateX(0);
+	background-color: #ffcccc;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content1 a {
+	float: none;
+	color: red;
+	transform: skewX(10deg) translateX(0);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content1 a:hover {
+	transform: skewX(5deg) translateX(0);
+	background-color: #cab6eb;
+}
+
+.dropdown1:hover .dropdown-content1 {
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div class="header">
+		<a href="http://localhost:8081/dashboard" class="active">Home</a> <a
+			href="http://localhost:8081/restaurants">Restaurants</a> <a
+			href="http://localhost:8081/contactus">Contact us</a>
+
+		<div class="a">
+
+			<font color=white><a th:href="@{login}"
+				th:each="user: ${loki}" th:text="${user}"></a></font>
+			<div class="navbar1 search">
+
+
+				<div class="dropdown1">
+					<button class="dropbtn1">
+						<lable id="naveen" th:each="user: ${username}" th:text="${user}">
+						</lable>
+
+					</button>
+					<div class="dropdown-content1">
+
+						<a th:href="@{/LogOut}">Logout</a>
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+	<br>
+
+	<div align="center">
+		<div class="size">
+			<div>
+				<div>
+					<div class="row">
+						<div>
+							<h2>New Dish</h2>
+							<p th:text="${message}" th:if="${message ne null}"
+								class="alert alert-primary"></p>
+
+							<form method="post" th:action="@{/dishphotos}"
+								enctype="multipart/form-data">
+								<div>
+									<label class="float-left red">Enter Dish Name</label> <input
+										type="text" required="required" name="dishname"
+										placeholder="Enter Dish name" id="Name" maxlength="50">
+								</div>
+								<label class="float-left red">Enter price</label> <input
+									type="text" name="price" id="UserName"
+									placeholder="Enter price" required="required" maxlength="9"
+									minlength="2"
+									oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+								<label for="name" class="float-left red">Enter
+									Description</label> <input type="text" id="Name" name="description"
+									required="required" placeholder="Enter  Description" /> <label
+									class="float-left red">Enter Type</label> <select name="type">
+									<option></option>
+									<option th:each="restaurants: ${dishtype}"
+										th:text="${restaurants.dishtype} "
+										th:value="${restaurants.type_id}">
+								</select>
+								<div class="form-group">
+									<label class="float-left red">Select Restaurant</label> <select
+										name="Restaurantid">
+										<option></option>
+										<!--  <option th:each="restaurants: ${restaurant}" th:text="${(restaurants.Restaurant_Name)}+${restaurants.Restaurant_id}" ></option> -->
+										<option th:each="restaurants: ${restaurant}"
+											th:text="${restaurants.Restaurant_Name}"
+											th:value="${restaurants.Restaurant_id}"></option>
+									</select> <label class="float-left red">Select File</label><br> <input
+										type="file" name="file">
+								</div>
+
+								<button type="submit" class="btn float-right btn-primary">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("input#Name").on({
+			keydown : function(e) {
+				if (e.which === 32)
+					return e.trim();
+			},
+			change : function() {
+				this.value = this.value.replace(/\s/g, "");
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html xmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Restaurant project</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="fooditems.css">
+<style>
+</style>
+</head>
+<body>
+<div class="header">
+		<a href="#home" class="active">Home</a> 
+		
+		<a href="http://localhost:8080/contactus">Contact Us</a>
+		<a href="http://localhost:8080/restaurants">Restaurants</a>
+		<a th:href ="@{/UserRegistration}" >user History</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+		<input type="text" class="search" placeholder="Search..">
+	</div>
+<div class="w3-content w3-section" style="max-width: 80%" align="center">
+
+<div th:each="restaurants,iterStat: ${names}" >
+
+<img class="mySlides" th:src="'data:image/jpeg;base64,' + ${restaurants.images}" style="width: 70%" height="50%">
+</div>
+
+		<!-- <img class="mySlides"
+			src="https://ak.picdn.net/shutterstock/videos/1060288052/thumb/1.jpg"
+			style="width: 70%" height="50%"> <img class="mySlides"
+			src="https://www.holidify.com/images/cmsuploads/compressed/indian-1768906_1920_20180322173733.jpg"
+			style="width: 75%"  height="50%"> <img class="mySlides"
+			src="https://images.indianexpress.com/2021/04/indian-food-1200.jpg"
+			style="width: 75%"> <img class="mySlides"
+			src="https://www.holidify.com/images/cmsuploads/compressed/indian-1768906_1920_20180322173733.jpg"
+			style="width: 75%"  height="50%"> -->
+	</div>
+	<h1 align="center">Top Rated Food Items </h1>
+	
+	
+<div>
+	<table>
+	<!-- these are all dish tables for fetching data form dish table like dish name and dish images -->
+	<td th:each="dishnames,iterStat: ${images}" th:if="${iterStat.index} <2">
+		<div>
+<a th:href="@{/DishImagesById/{id}(id=${dishnames.id})}">
+						 <img  th:src="'data:image/jpeg;base64,' + ${dishnames.images}" width="400px" height="200px"  class="zoom space card-body"/>
+	</a></div>
+			<div th:text="${dishnames.dishname}" class="arrang flex-container"  ></div>		
+				
+	</td>
+
+	</table>
+	<table>
+	
+	<td th:each="dishnames,iterStat: ${images}" th:if="${iterStat.index} >1 and ${iterStat.index} <4">
+		<div>
+	<a th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img  th:src="'data:image/jpeg;base64,' + ${dishnames.images}" width="400px" height="200px"  class="zoom space card-body"/>
+	</a></div>
+			<div th:text="${dishnames.dishname}" class="arrang flex-container"  ></div>		
+				
+	</td>
+
+	</table>
+<table>
+	
+	<td th:each="dishnames,iterStat: ${images}" th:if="${iterStat.index} >3 and ${iterStat.index} <6">
+		<div>
+	<a th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img  th:src="'data:image/jpeg;base64,' + ${dishnames.images}" width="400px" height="200px"  class="zoom space card-body"/>
+	</a></div>
+			<div th:text="${dishnames.dishname}" class="arrang flex-container"  ></div>		
+				
+	</td>
+
+	</table>
+	
+	<table>
+	
+	<td th:each="dishnames,iterStat: ${images}" th:if="${iterStat.index} >5 and ${iterStat.index} <8">
+		<div>
+	<a th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img  th:src="'data:image/jpeg;base64,' + ${dishnames.images}" width="400px" height="200px"  class="zoom space card-body"/>
+	</a></div>
+			<div th:text="${dishnames.dishname}" class="arrang flex-container"  ></div>		
+				
+	</td>
+
+	</table>
+	 <table>
+	
+	<td th:each="dishnames,iterStat: ${images}" th:if="${iterStat.index} >7 and ${iterStat.index} <10">
+		<div>
+	<a th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img  th:src="'data:image/jpeg;base64,' + ${dishnames.images}" width="400px" height="200px"  class="zoom space card-body"/>
+	</a></div>
+			<div th:text="${dishnames.dishname}" class="arrang flex-container"  ></div>		
+				
+	</td>
+
+	</table>
+	 
+	</div>
+	<!-- 	<h1 align="center">Top Rated Food Items</h1>
+	<table border="0" width=60%>
+<tr>
+		<td width="25%" align="center" class="zoom"><a href="http://localhost:8080/restaurants">	<img
+				src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/tvur6lwwvnd2euflpswm"
+				width="85%"> </a><td>
+				<td width="25%" align="center" class="zoom"><a href="http://localhost:8080/restaurants">	<img
+				src="https://www.sandyathome.com/wp-content/uploads/2019/09/gobi-65-rice.jpg"
+				width="85%"> </a><td>
+		</tr>
+		<tr>
+			<td align="center" class="zoom"><b>spanish food dish</b></td>
+			<td align="center" class="zoom"><b>Gobi Rice</b></td>
+		</tr>
+		<tr>
+			<td align="center" class="zoom"><font color="green"><a href="http://localhost:8080/restaurants">The Burning Brownie.</a>
+					</font></td>
+			<td align="center" class="zoom"><font color="green"><a href="http://localhost:8080/restaurants">Meat You There.</a>
+				</font></td>
+		</tr>
+			<tr>
+		<td width="25%" align="center" class="zoom"><a href="http://localhost:8080/restaurants"><img
+				src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwZm9vZHxlbnwwfHwwfHw%3D&w=1000&q=80"
+				width="85%"></a></td>
+				<td width="25%" align="center" class="zoom"><a href="http://localhost:8080/restaurants"><img
+				src="https://www.spiceeats.com/wp-content/uploads/2021/05/Simple-Chicken-Fry.jpg"
+				width="85%"></a></td>
+		</tr>
+		<tr>
+		<td align="center" class="zoom"><b>Full Meals</b></td>
+		<td align="center" class="zoom"><b>Chiken Fry</b></td>
+		</tr>
+		<tr>
+		<td align="center" class="zoom"><font color="green"><a href="http://localhost:8080/restaurants">Signature Cuisine.</a>
+					</font></td>
+					<td align="center" class="zoom"><font  color="green"><a href="http://localhost:8080/restaurants">The Golden Era.</a>
+					</font></td>
+		</tr>
+	<tr>
+			<td width="25%" align="center" class="zoom"><a href="http://localhost:8080/restaurants"><img
+				src="https://media.istockphoto.com/photos/biryani-picture-id1305452646?s=612x612"
+				width="85%"></a></td>
+			<td width="25%" align="center" class="zoom"><a href="http://localhost:8080/restaurants"><img
+				src="https://image.shutterstock.com/image-photo/chicken-skew-kebabtraditional-indian-dish-260nw-549085792.jpg"
+				width="85%"></a></td>
+		</tr>
+		<tr>
+			<td align="center" class="zoom"><b>Biryani</b></td>
+			<td align="center" class="zoom"><b>chiken tickka</b></td>
+		</tr>
+		<tr>
+			<td align="center" class="zoom"><font  color="green" ><a href="http://localhost:8080/restaurants">Oh My Grill.</a>
+					</font></td>
+			<td align="center" class="zoom"><font  color="green" ><a href="http://localhost:8080/restaurants">Emerald Grill.</a>
+					</font></td>	
+	</table>
+ -->	<div class=real>
+	<h3><u>All available Restaurents</u></h3><br>
+<div class=real2>
+ 	<div th:each="restaurants: ${names}">
+		
+	 <!--    <a  href="http://localhost:8080/items" ><div th:text="${restaurants.name}" class="arrang flex-container" onclick="show()" ></div></a></div>	</a>  -->
+	 <a th:href="@{/ForResaturant/{id}(id=${restaurants.id})}"><div th:text="${restaurants.name}"></div></a>
+	
+	<!--  <a href="http://localhost:8080/items" onclick="show()">The Burning Brownie.</a><br><br>
+	<a href="http://localhost:8080/fooditem" onclick="show1()">Meat You There.</a><br><br>
+	<a href="http://localhost:8080/fooditemss" onclick="show2()">Signature Cuisine.</a><br><br>
+	<a href="http://localhost:8080/fooditems" onclick="show3()">The Golden Era</a>.<br><br>
+	<a href="http://localhost:8080/itemss" onclick="show4()">Oh My Grill.</a><br><br>
+	<a href="http://localhost:8080/food" onclick="show5()">Emerald Grill.</a> -->
+	</div></div>
+	
+	
+	
+	<script >
+		var myIndex = 0;
+		carousel();
+		function carousel() {
+			var i;
+			var x = document.getElementsByClassName("mySlides");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			myIndex++;
+			if (myIndex > x.length) {
+				myIndex = 1
+			}
+			x[myIndex - 1].style.display = "block";
+			setTimeout(carousel, 3000);
+		}
+		
+		
+		
+		
+	</script>
+	
+</body>
+</html>

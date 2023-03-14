@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Library Management System</title>
+</head>
+ <style>
+.button {
+	background-color: cornflowerblue;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 15px;
+    margin: 3px ;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.button1 {
+	background-color: cornflowerblue;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    font-size: 15px;
+    margin: 3px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+</style>
+<body>
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Book Registration</h2>
+<form name="book" method="post" th:action="@{/savebook}">
+ <div class="form-group">
+    <label for="isbnid">Isbnid</label>
+    <input type="text" placeholder="isbnid" name="isbnid" class="form-control" id="isbnid"
+    		required="required">
+  </div><br>
+   <div class="form-group">
+    <label for="bookname">Bookname</label>
+    <input type="text" placeholder="bookname" name="bookname" class="form-control" id="bookname"
+    		required="required" >
+  </div><br>
+   <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text" placeholder="author" name="author" class="form-control" id="author"
+    		required="required">
+  </div><br>
+   <div class="form-group">
+    <label for="category">Category</label>
+    <select name="category">
+		<option></option>
+		<option th:each="book:${category}"
+				
+				th:text="${book.name}"></option>
+		</select>
+  </div><br>
+   <div class="form-group">
+    <label for="available">Available</label>
+    <input type="text" placeholder="available" name="available" class="form-control" id="available"
+    		required="required">
+  </div><br>
+  
+   <button class="button" >Submit</button>
+   <a th:href="@{/}" class="button1">Home</a>
+    <script>
+  	
+  </script>
+  </form>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </body>
+  </html>

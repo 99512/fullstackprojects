@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="fooditems.css">
+<title>Restaurant Registration</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+.red {
+	color: white;
+	text-align: left;
+}
+
+body {
+	background-image:
+		url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_960_720.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+h2 {
+	color: orange;
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 6px 20px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.size {
+	width: 34%;
+	padding: 25px 50px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.navbar1 {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.dropdown1 .dropbtn1 {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content1 {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content1 a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content1 a:hover {
+	background-color: #ddd;
+}
+
+.dropdown1:hover .dropdown-content1 {
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div class="header">
+		<a href="http://localhost:8081/dashboard" class="active">Home</a> <a
+			href="http://localhost:8081/restaurants">Restaurants</a> <a
+			href="http://localhost:8081/contactus">Contact us</a>
+
+		<div class="a">
+
+			<font color=white><a th:href="@{login}"
+				th:each="user: ${loki}" th:text="${user}"></a></font>
+			<div class="navbar1 search">
+
+
+				<div class="dropdown1">
+					<button class="dropbtn1">
+						<lable id="naveen" th:each="user: ${username}" th:text="${user}">
+						</lable>
+
+					</button>
+					<div class="dropdown-content1">
+
+						<a th:href="@{/LogOut}">Logout</a>
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+	<br>
+	<div align="center">
+		<div class="size">
+			<div>
+				<div>
+					<div class="row">
+						<div>
+							<h2>Restaurant Registration</h2>
+							<p th:text="${message}" th:if="${message ne null}"
+								class="alert alert-primary"></p>
+
+							<form method="post" th:action="@{/upload}"
+								enctype="multipart/form-data">
+
+								<label class="float-left red">Enter Name</label> <input
+									type="text" placeholder="Enter Name" id="Name" name="name"
+									required="required"
+									oninput="this.value = this.value.replace(/[^A-z. ]/g, '').replace(/(\..*?)\..*/g, '$1');"
+									title="please Enter a valid Restaurant name"> <label
+									class="float-left red"> Phone number</label> <input type="text"
+									name="number" placeholder="Enter Number" required="required"
+									oninput="this.value = this.value.replace(/[^0-9.+ ]/g, '').replace(/(\..*?)\..*/g, '$1');"
+									value="+91 " maxlength="14"
+									pattern="[+?][9?][1?][ ?][789][0-9]{9}"
+									title="please enter a valid number a number. It must has have length 10 ">
+								<label class="float-left red">Enter Landmark</label> <input
+									type="text" name="landmark" placeholder="Enter Landmark"
+									required="required"> <label class="float-left red">Enter
+									Pin code</label> <input type="text" id="Name" name="pincode"
+									placeholder="Enter Pincode" maxlength="6" minlength="6"
+									required="required"
+									onkeypress="return event.charCode>= 48 && event.charCode<=57"
+									title="Your pincode is wrong please enter a valid pincode">
+								<label class="float-left red">Enter Address</label> <input
+									type="text" name="Address" placeholder="Enter Address"
+									required="required"> <label class="float-left red">Enter
+									Ratings</label> <input type="text" name="ratings"
+									placeholder="Enter Ratings" required="required" maxlength="1"
+									minlength="1"
+									oninput="this.value = this.value.replace(/[^1-5.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+								<div class="form-group">
+									<label class="float-left red">Select File</label><br> <input
+										type="file" name="file">
+								</div>
+								<button type="submit" class="btn float-right btn-primary">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("input#Name").on({
+			keydown : function(e) {
+				if (e.which === 32)
+					return e.trim();
+			},
+			change : function() {
+				this.value = this.value.replace(/\s/g, "");
+			}
+		});
+	</script>
+
+</body>
+</html>

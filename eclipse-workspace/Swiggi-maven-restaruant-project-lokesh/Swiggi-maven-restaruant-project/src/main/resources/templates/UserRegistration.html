@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Registration</title>
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="fooditems.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="header">
+		<a href="http://localhost:8081/dashboard" class="active">Home</a> <a
+			href="http://localhost:8081/restaurants">Restaurants</a> <a
+			href="http://localhost:8081/contactus">Contact us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8081/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<h1>List Users</h1>
+		</div>
+
+		<a th:href="@{/user}" class="btn btn-primary btn-sm mb-3">Add User</a>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+
+					<th>First Name</th>
+					<th>Last Number</th>
+					<th>Pin Code</th>
+					<th>Land mark</th>
+					<th>Email</th>
+					<th>Phone number</th>
+					<!-- 	<th>User Password</th> -->
+					<th>Address</th>
+					<th>Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user:${users}">
+					<td th:text="${user.firstname}"></td>
+					<td th:text="${user.lastname}"></td>
+					<td th:text="${user.pincode}"></td>
+					<td th:text="${user.landmark}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.phoneNumber}"></td>
+					<!-- 	<td th:text="${user.password}"></td> -->
+					<td th:text="${user.adress}"></td>
+					<td><a th:href="@{/showFormUserForUpdate/{id}(id=${user.id})}"
+						class="btn btn-primary" href="/contact">Update</a> <a
+						th:href="@{/DeleteUser/{id}(id=${user.id})}"
+						class="btn btn-danger" href="/contact">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

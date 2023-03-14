@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="fooditems.css">
+<meta charset="ISO-8859-1">
+<title>Former Management System</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<style>
+body {
+	background-position: center;
+	background-image:
+		url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_960_720.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+div.ralative {
+	position: relative;
+	top: 200px;
+	left: 450px;
+	right: 50px;
+	width: 600px;
+	height: 300px;
+}
+
+input[type=text], input[type=number], input[type=email] , input[type=password] {
+    width: 100%;
+    padding: 2px 20px;
+    margin: 4px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+<div class="header">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> 
+			<a href="http://localhost:8080/restaurants">Restaurants</a>
+		<a href="http://localhost:8080/contactus">Contact us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/user">New ? --Create a new account
+				&nbsp;&nbsp;</a>
+		</div>
+		</div>
+<div align="right" style="color: blue">
+
+</div>
+	<div class="ralative">
+		<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+			<h3>Login Form</h3>
+			<form  th:action="@{/dashboard}"  style="margin: auto; width: 220px;">
+			<label>Enter Email:</label>
+			<input type="email"  placeholder="Enter email" required="required"/>
+			<label>Enter Password:</label>
+			<input type="password"  required="required" placeholder="Enter password" />				
+			<br><br>
+			  <input type="submit"  value="submit" class="btn btn-primary btn-sm mb-3">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

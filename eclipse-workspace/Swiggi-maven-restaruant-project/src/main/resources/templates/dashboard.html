@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html xmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Restaurant project</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet"
+	href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="fooditems.css">
+<style>
+.navbar1 {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.dropdown1 .dropbtn1 {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	transform: skewX(10deg) translateX(0);
+	transform: skewX(25deg) rotate(3deg);
+	color: white;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content1 {
+	display: none;
+	position: absolute;
+	transform: skewX(25deg) translateX(0);
+	background-color: #ffcccc;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content1 a {
+	float: none;
+	color: red;
+	transform: skewX(10deg) translateX(0);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content1 a:hover {
+	transform: skewX(5deg) translateX(0);
+	background-color: #cab6eb;
+}
+
+.dropdown1:hover .dropdown-content1 {
+	display: block;
+}
+h2{
+padding-left: 40px;
+font-style:italic;
+font-weight:bolder;
+ color: #34a5cb;
+}
+</style>
+<style>
+.dropbtna {
+
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdowna {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-contenta {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-contenta a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown-contena a:hover {background-color: #ddd;}
+
+.dropdowna:hover .dropdown-contenta {display: block;}
+
+.dropdowna:hover .dropbtna {background-color: #3e8e41;}
+
+.mySlides{
+
+padding: 30px;
+padding-right:30px;
+max-width: 100%;
+}
+</style>
+</head>
+<body>
+	<div class="header">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> <a
+			href="http://localhost:8080/contactus">Contact Us</a> <a
+			href="http://localhost:8080/restaurants">Restaurants</a> <a
+			th:href="@{/UserRegistration}">User History</a> <a
+			th:href="@{/isLongin}">Cart</a>
+
+
+
+		<div class="a ">
+&nbsp;&nbsp;&nbsp;
+			<font color=white><a th:href="@{login}"
+				th:each="user: ${loki}" th:text="${user}"></a></font>
+			<div class="navbar1 search">
+				<div class="dropdown1">
+					<button class="dropbtn1">
+						<lable id="naveen" th:each="user: ${username}" th:text="${user}">
+						</lable>
+
+					</button>
+					<div class="dropdown-content1">
+						<a th:href="@{/LogOut}">Logout</a>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div >
+		<img class="search1"
+			src="https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png"
+			style="width: 2%" height="2%"></div>
+		<form th:action="@{/search}" method="post">
+			<input type="search" name="search" class="search"
+				placeholder="Search..">
+			<div class="search2">
+				<button class="search1" type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+
+
+
+
+	<div 
+		align="center">
+
+		<div th:each="restaurants,iterStat: ${names}">
+
+			<img class="mySlides"
+				th:src="'data:image/jpeg;base64,' + ${restaurants.images}"
+		width = "1500" height = "450"
+				 >
+		</div>
+
+	</div>
+	<h1 align="center">Top Rated Food Items</h1>
+	<h2 id="naveen" th:each="user: ${message}" th:text="${user}"></h2>
+	<table>
+		<!-- these are all dish tables for fetching data form dish table like dish name and dish images -->
+		<td th:each="dishnames,iterStat: ${searchbydishname}"
+			th:if="${iterStat.index} <3">
+			<div>
+				<a
+					th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dish_name})}">
+					<img th:src="'data:image/jpeg;base64,' + ${dishnames.dish_images}"
+					width="400px" height="200px" class="zoom space card-body" />
+				</a>
+			</div>
+			<div class="row">
+
+				<div th:text="${dishnames.dish_name}" class="arrang flex-container"></div>
+				&nbsp;&nbsp;&nbsp; <a
+					th:href="@{/showFormForDish/{id}(id=${dishnames.dish_id})}">
+					<button class="button">Buy</button>
+				</a>
+
+			</div>
+		</td>
+
+	</table>
+
+	<table>
+		<!-- these are all dish tables for fetching data form dish table like dish name and dish images -->
+		<td th:each="dishnames,iterStat: ${searchbydishname}"
+			th:if="${iterStat.index} >2">
+			<div>
+				<a
+					th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dish_name})}">
+					<img th:src="'data:image/jpeg;base64,' + ${dishnames.dish_images}"
+					width="400px" height="200px" class="zoom space card-body" />
+				</a>
+			</div>
+			<div class="row">
+
+				<div th:text="${dishnames.dish_name}" class="arrang flex-container"></div>
+				&nbsp;&nbsp;&nbsp; <a
+					th:href="@{/showFormForDish/{id}(id=${dishnames.dish_id})}">
+					<button class="button">Buy</button>
+				</a>
+
+			</div>
+		</td>
+
+	</table>
+	<h2 id="naveen" th:each="user: ${messages}" th:text="${user}"></h2>
+	<table>
+
+		<td th:each="dishnames,iterStat: ${searchbyrestaurnatname}"
+			th:if="${iterStat.index} <3">
+			<div>
+				<a th:href="@{/ForResaturant/{id}(id=${dishnames.Restaurant_id})}">
+					<img th:src="'data:image/jpeg;base64,' + ${dishnames.dish_images}"
+					width="400px" height="200px" class="zoom space card-body" />
+				</a>
+			</div>
+			<div class="row">
+
+				<div th:text="${dishnames.dish_name}" class="arrang1 flex-container"></div>
+			
+			</div>
+			<div class="row">
+
+				<div th:text="${dishnames.Restaurant_name}"
+					class="arrang2 flex-container"></div>
+
+
+			</div>
+		</td>
+
+	</table>
+<table>
+
+		<td th:each="dishnames,iterStat: ${searchbyrestaurnatname}"
+			th:if="${iterStat.index} >2 and ${iterStat.index} <6">
+			<div>
+				<a th:href="@{/ForResaturant/{id}(id=${dishnames.Restaurant_id})}">
+					<img th:src="'data:image/jpeg;base64,' + ${dishnames.dish_images}"
+					width="400px" height="200px" class="zoom space card-body" />
+				</a>
+			</div>
+			<div class="row">
+
+				<div th:text="${dishnames.dish_name}" class="arrang1 flex-container"></div>
+			
+			</div>
+			<div class="row">
+
+				<div th:text="${dishnames.Restaurant_name}"
+					class="arrang2 flex-container"></div>
+
+
+			</div>
+		</td>
+
+	</table>
+
+	<div>
+		<table>
+
+			<td th:each="dishnames,iterStat: ${images}"
+				th:if="${iterStat.index} <2">
+				<div>
+					<a
+						th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}">
+						<img th:src="'data:image/jpeg;base64,' + ${dishnames.images}"
+						width="400px" height="200px" class="zoom space card-body" />
+					</a>
+				</div>
+				<div class="row">
+
+					<div th:text="${dishnames.dishname}" class="arrang flex-container"></div>
+					&nbsp;&nbsp;&nbsp; <a
+						th:href="@{/showFormForDish/{id}(id=${dishnames.id})}">
+						<button class="button">Buy</button>
+					</a>
+
+				</div>
+			</td>
+
+		</table>
+		<table>
+
+			<td th:each="dishnames,iterStat: ${images}"
+				th:if="${iterStat.index} >1 and ${iterStat.index} <4">
+				<div>
+					<a
+						th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img
+						th:src="'data:image/jpeg;base64,' + ${dishnames.images}"
+						width="400px" height="200px" class="zoom space card-body" /> </a>
+				</div>
+				<div class="row">
+
+					<div th:text="${dishnames.dishname}" class="arrang flex-container"></div>
+					&nbsp;&nbsp;&nbsp; <a
+						th:href="@{/showFormForDish/{id}(id=${dishnames.id})}"><button
+							class="button">Buy</button></a>
+
+				</div>
+			</td>
+
+		</table>
+		<table>
+
+			<td th:each="dishnames,iterStat: ${images}"
+				th:if="${iterStat.index} >3 and ${iterStat.index} <6">
+				<div>
+					<a
+						th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img
+						th:src="'data:image/jpeg;base64,' + ${dishnames.images}"
+						width="400px" height="200px" class="zoom space card-body" /> </a>
+				</div>
+				<div class="row">
+
+					<div th:text="${dishnames.dishname}" class="arrang flex-container"></div>
+					&nbsp;&nbsp;&nbsp; <a
+						th:href="@{/showFormForDish/{id}(id=${dishnames.id})}"><button
+							class="button">Buy</button></a>
+
+				</div>
+
+			</td>
+
+		</table>
+
+		<table>
+
+			<td th:each="dishnames,iterStat: ${images}"
+				th:if="${iterStat.index} >5 and ${iterStat.index} <8">
+				<div>
+					<a
+						th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img
+						th:src="'data:image/jpeg;base64,' + ${dishnames.images}"
+						width="400px" height="200px" class="zoom space card-body" /> </a>
+				</div>
+				<div class="row">
+
+					<div th:text="${dishnames.dishname}" class="arrang flex-container"></div>
+					&nbsp;&nbsp;&nbsp; <a
+						th:href="@{/showFormForDish/{id}(id=${dishnames.id})}"><button
+							class="button">Buy</button></a>
+
+				</div>
+
+			</td>
+
+		</table>
+		<table>
+
+			<td th:each="dishnames,iterStat: ${images}"
+				th:if="${iterStat.index} >7 and ${iterStat.index} <10">
+				<div>
+					<a
+						th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img
+						th:src="'data:image/jpeg;base64,' + ${dishnames.images}"
+						width="400px" height="200px" class="zoom space card-body" /> </a>
+				</div>
+				<div class="row">
+
+					<div th:text="${dishnames.dishname}" class="arrang flex-container"></div>
+					&nbsp;&nbsp;&nbsp; <a
+						th:href="@{/showFormForDish/{id}(id=${dishnames.id})}"><button
+							class="button">Buy</button></a>
+
+				</div>
+
+			</td>
+
+		</table>
+		<table>
+
+			<td th:each="dishnames,iterStat: ${images}"
+				th:if="${iterStat.index} >9 and ${iterStat.index} <12">
+				<div>
+					<a
+						th:href="@{/restaurantsByDishName/{dishName}(dishname=${dishnames.dishname})}"><img
+						th:src="'data:image/jpeg;base64,' + ${dishnames.images}"
+						width="400px" height="200px" class="zoom space card-body" /> </a>
+				</div>
+				<div class="row">
+
+					<div th:text="${dishnames.dishname}" class="arrang flex-container"></div>
+					&nbsp;&nbsp;&nbsp; <a
+						th:href="@{/showFormForDish/{id}(id=${dishnames.id})}"><button
+							class="button">Buy</button></a>
+
+				</div>
+
+			</td>
+
+		</table>
+
+	</div>
+
+	<div class=real>
+		<h3>
+			<u><h5 align="center" id="naveen" th:each="user: ${all}"
+		th:text="${user}"></h5></u>
+		</h3>
+
+		<br>
+		<div class=real2>
+
+			<div th:each="restaurants: ${names}">
+				<!--    <a  href="http://localhost:8080/items" ><div th:text="${restaurants.name}" class="arrang flex-container" onclick="show()" ></div></a></div>	</a>  -->
+				<a th:href="@{/ForResaturant/{id}(id=${restaurants.id})}"><div
+						th:text="${restaurants.name}"></div></a>
+
+
+			</div>
+		</div>
+
+
+
+
+		<script>
+			var myIndex = 0;
+			carousel();
+			function carousel() {
+				var i;
+				var x = document.getElementsByClassName("mySlides");
+				for (i = 0; i < x.length; i++) {
+					x[i].style.display = "none";
+				}
+				myIndex++;
+				if (myIndex > x.length) {
+					myIndex = 1
+				}
+				x[myIndex - 1].style.display = "block";
+				setTimeout(carousel, 3000);
+			}
+		</script>
+</body>
+</html>

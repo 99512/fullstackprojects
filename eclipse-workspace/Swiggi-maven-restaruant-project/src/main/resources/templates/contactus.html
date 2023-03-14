@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Contact us page</title>
+
+<link rel="stylesheet" href="fooditems.css">
+<style type="text/css">
+.colorr {
+	background-color: #85d9ee;
+	height: 100%;
+}
+
+h1 {
+	font-size: 500%;
+	color: white;
+}
+</style>
+<style>
+.navbar1 {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.dropdown1 .dropbtn1 {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	transform: skewX(10deg) translateX(0);
+	transform: skewX(25deg) rotate(3deg);
+	color: white;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+.dropdown-content1 {
+	display: none;
+	position: absolute;
+	transform: skewX(25deg) translateX(0);
+	background-color: #ffcccc;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content1 a {
+	float: none;
+	color: red;
+	transform: skewX(10deg) translateX(0);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+.dropdown-content1 a:hover {
+	transform: skewX(5deg) translateX(0);
+	background-color: #cab6eb;
+}
+
+.dropdown1:hover .dropdown-content1 {
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div class="header">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> <a
+			href="http://localhost:8080/restaurants">Restaurants</a> <a
+			href="http://localhost:8080/contactus">Contact us</a>
+		<div class="a">
+
+			<font color=white><a th:href="@{login}"
+				th:each="user: ${loki}" th:text="${user}"></a></font>
+			<div class="navbar1 search">
+
+
+				<div class="dropdown1">
+					<button class="dropbtn1">
+						<lable id="naveen" th:each="user: ${username}" th:text="${user}">
+						</lable>
+
+					</button>
+					<div class="dropdown-content1">
+
+						<a th:href="@{/LogOut}">Logout</a>
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<div class=colorr>
+		<br>
+
+		<div align="center">
+			<h1>Contact Us</h1>
+			This is our phone number :<br> <br> <b>+91 9391795962 ,
+				+91 8897532188</b><br> <br>This is our Email:<b><br>
+			<br>loki@mail.com</b><br>
+			<br>
+
+
+		</div>
+	</div>
+</body>
+
+</html>

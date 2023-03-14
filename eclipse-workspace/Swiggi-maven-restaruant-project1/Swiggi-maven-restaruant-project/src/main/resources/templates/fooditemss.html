@@ -1,0 +1,215 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Food Items</title>
+<link rel="stylesheet" href="items.css">
+<style type="text/css">
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.head {
+  overflow: hidden;
+  background-color: #333;
+}
+.active {
+  background-color:#ada06c;
+  color:#ede9b4;
+}
+.head a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 11px 18px;
+  text-decoration: none;
+}
+.a{
+   float: right;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.head a:hover, .dropdown:hover .dropbtn {
+  background-color: #cab6eb;
+}
+
+.content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .content {
+  display: block;
+}
+
+.search {
+  float: right;
+  padding: 4px;
+  margin-top: 6px;
+  margin-right: 16px;
+  border: none;
+  border-radius:4px;
+  font-size: 17px;
+}
+
+
+
+
+
+
+</style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+
+
+<body>
+<div>
+
+<div class="head">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> 
+			<a href="http://localhost:8080/restaurants">Restaurants</a>
+		<a href="http://localhost:8080/contactus">Contact us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+		</div>
+
+</div>
+<div class=show>
+
+	<div class="food">
+		<div class="Header">
+			<h3 class="Heading">Shopping Cart</h3>				
+		</div>
+		<div class="Cart-Items">
+			<div class="image-box">
+				<a href="http://localhost:8080/dishAddition"><img
+					src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/tvur6lwwvnd2euflpswm"
+					height="120px" /></a>
+			</div>
+			<div class="about">
+				<br>
+				<h1 class="title">Dosa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</h1>
+				&#x20b9;	250 
+				<br>
+				<label id="some">Meet you there.</label>
+				<h3 class="subtitle" >One Plate</h3>
+				<img
+					src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+					height="30px" />
+			</div>
+			<div class="counter">
+				<input type="button" value="+" id="inc" onclick="incNumber1()" /> <label
+					id="display1">0</label> 
+					<input type="button" value="-" id="dec" onclick="decNumber1()" />
+			</div>
+			<div class="prices">
+			
+			<br><br>
+				<div class="amount">&#x20b9; <label id="displayA">0</label></div>
+				
+			</div>
+		</div>
+		<div class="Cart-Items">
+			<div class="image-box">
+		<a href="http://localhost:8080/dishAddition">
+		<img src="https://www.sandyathome.com/wp-content/uploads/2019/09/gobi-65-rice.jpg"
+					height="120px" /></a>
+			</div>
+			<div class="about">
+				<br>
+				<h1 class="title">Gobi Rice</h1>
+				&#x20b9;	270 
+				<br>
+				<label id="some1">Meet you there.</label>
+				<h3 class="subtitle" >One Plate</h3>
+				<img
+					src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+					height="30px" />
+			</div>
+			<div class="counter">
+				<input type="button" value="+" id="inc" onclick="incNumber2()" /> <label
+					id="display2">0</label> 
+					<input type="button" value="-" id="dec" onclick="decNumber2()" />
+			</div>
+			<div class="prices">
+			<br><br>
+				<div class="amount">
+				
+					<b>&#x20b9;  <label id="displayB">0</label></b>
+				</div>
+				
+			</div>
+		</div>
+		<div class="Cart-Items">
+			<div class="image-box">
+			<a href="http://localhost:8080/dishAddition">	<img
+					src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwZm9vZHxlbnwwfHwwfHw%3D&w=1000&q=80"
+					height="120px" /></a>
+			</div>
+			<div class="about">
+				<br>
+				<h1 class="title">Full Meals</h1>
+				&#x20b9;	200
+				<br>
+				<label id="some2">Meet you there.</label>
+				<h3 class="subtitle"onclick="show()">One Plate</h3>
+				<img
+					src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+					height="30px" />
+			</div>
+			<div class="counter">
+				<input type="button" value="+" id="inc" onclick="incNumber3()" /> <label id="display3">0</label> 
+				
+					<input type="button" value="-" id="dec" onclick="decNumber3()" />
+			</div>
+			
+			<div class="prices">
+			<br><br>
+		
+				<div class="amount">&#x20b9; <label id="displayC">0</label> </div>
+				
+				</div>
+			</div>
+				<hr> 
+ <div class="checkout">
+ <div class="total">
+ <div>
+ <br>
+ <div class="Subtotal">Sub-Total</div>
+ </div>
+ <div class="total-amount">&#x20b9; <label id="displayD">0</label></div>
+ </div>
+<a
+href="http://localhost:8080/dashboard"><button class="button" onclick="thisFunction()" >Checkout</button></a>
+ </div>
+		</div>
+		</div>
+	<script src="input.js">
+	
+	</script>
+</body>
+
+</html>

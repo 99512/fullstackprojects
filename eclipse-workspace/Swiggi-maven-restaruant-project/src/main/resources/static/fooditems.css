@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #333;
+}
+.active {
+  background-color:#ada06c;
+  color:#ede9b4;
+}
+.header a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 11px 18px;
+  text-decoration: none;
+}
+.a{
+   float: right;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.header a:hover, .dropdown:hover .dropbtn {
+  background-color: #cab6eb;
+}
+
+.content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .content {
+  display: block;
+}
+
+.search {
+  float: right;
+  padding: 4px;
+  margin-top: 6px;
+  margin-right: 50px;
+  border: none;
+  border-radius:4px;
+  font-size: 17px;
+}
+
+
+.search1 {
+  float: right;
+  padding: 0px;
+  margin-top: 10px;
+  margin-right: -10px;
+  border: none;
+  border-radius:4px;
+  font-size: 17px;
+}
+.search2 {
+  float: right;
+  padding-right:20 px;
+  margin-top: 0px;
+  margin-right: -210px;
+  border: none;
+  border-radius:4px;
+  font-size: 17px;
+}
+
+

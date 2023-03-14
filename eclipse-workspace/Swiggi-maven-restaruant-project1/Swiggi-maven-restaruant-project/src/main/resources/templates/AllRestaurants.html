@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="fooditems.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+</head>
+<body>
+<div class="header">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> 
+		
+		<a href="http://localhost:8080/restaurants">Restaurants</a>
+		<a href="http://localhost:8080/contactus">Contact us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+		</div>
+
+	<div class="container">
+		<div class="row">
+			<h1>List Restaurant</h1>
+		</div>
+
+		<a th:href="@{/RestaurantRegistration}" class="btn btn-primary btn-sm mb-3">Add
+			Restaurant</a>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+
+					<th>Restaurant Name</th>
+					<th>Restaurant Number</th>
+					<th>Restaurant ratings</th>
+					<th>Restaurant Address</th>
+					<th>Pin Code</th>
+					<th>land mark</th>
+					<th>images</th>
+					<th>Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="restaurant:${restaurants}">
+        			<td th:text="${restaurant.name}"></td>
+					<td th:text="${restaurant.number}"></td>
+					<td th:text="${restaurant.ratings}"></td>
+					<td th:text="${restaurant.address}"></td>
+					<td th:text="${restaurant.pincode}"></td>
+					<td th:text="${restaurant.landmark}"></td>
+					<td>
+					<img  th:src="'data:image/jpeg;base64,' + ${restaurant.images}" width="100px" height="100px"/>
+					                                 </td>
+				<td><a th:href="@{/showFormForUpdate/{id}(id=${restaurant.id})}"
+						class="btn btn-primary" href="/contact">Update</a> <a
+						th:href="@{/DeleteEmployee/{id}(id=${restaurant.id})}"
+						class="btn btn-danger" href="/contact">Delete</a></td>
+
+				</tr>
+			</tbody>
+
+		</table>
+
+
+</body>
+</html>

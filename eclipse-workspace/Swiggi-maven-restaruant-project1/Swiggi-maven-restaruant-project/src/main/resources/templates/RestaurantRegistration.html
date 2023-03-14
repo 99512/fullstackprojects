@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="fooditems.css">
+    <title>Restaurant Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
+    <style type="text/css">
+
+.red{color:white;
+text-align:left;
+
+}
+body{
+	background-image:
+		url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_960_720.jpg');
+		background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+h2{
+    color:orange;
+    
+}
+
+input[type=text]{
+width: 100%;
+    padding: 6px 20px;
+ 
+   
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.size {
+     width: 34%;
+  padding: 25px 50px; 
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+   </style>
+</head>
+<body>
+<div class="header">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> 
+			<a href="http://localhost:8080/restaurants">Restaurants</a>
+		<a href="http://localhost:8080/contactus">Contact us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+		</div>
+<br>
+<div align="center">
+<div class="size">
+<div>
+    <div>
+        <div class="row">
+            <div>
+                <h2>Restaurant Registration</h2>
+                <p th:text="${message}" th:if="${message ne null}"  class="alert alert-primary"></p>
+                
+                <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                   
+                     <label class="float-left red"  >Enter name</label>
+                    <input type="text" placeholder="Enter Name" name="name" required="required">
+                    <label class="float-left red">Enter number</label>
+                    <input type="text" name="number" placeholder="Enter Number" required="required" maxlength="10" minlength="10"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                    <label class="float-left red">Enter landmark</label>
+                    <input type="text" name="landmark" placeholder="Enter Landmark" >
+             
+                    <label class="float-left red">Enter pincode</label>
+                    <input type="text" name="pincode" placeholder="Enter Pincode" maxlength="6" minlength="6"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                    <label class="float-left red">Enter Address</label>
+                    <input type="text" name="Address" placeholder="Enter Address" required="required" >
+                    <label class="float-left red">Enter Ratings</label>
+                    <input type="text" name="ratings" placeholder="Enter  Ratings" maxlength="1" minlength="1"
+                    oninput="this.value = this.value.replace(/[^1-5.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                     <div class="form-group">
+                       <label class="float-left red">Select File</label><br>
+                           <input type="file"  name="file" >
+                    </div>
+                    <button type="submit"  class="btn float-right btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

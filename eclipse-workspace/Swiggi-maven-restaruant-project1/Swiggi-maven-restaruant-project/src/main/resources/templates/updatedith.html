@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="user.css">
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<style type="text/css">
+
+body table {
+   color:white;
+    width: 40%;
+}
+.red{color:white;
+text-align: left;
+
+}
+body{
+	background-image:
+		url('https://cdn.pixabay.com/photo/2020/03/25/21/05/pizza-4968645_960_720.jpg');
+		background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+h2{
+    color:orange;
+    background-size: 50%;
+}
+
+    table.list {
+        width: 90%;
+   }
+
+
+
+tr:nth-child(even), table.list thead > tr {
+    background-color: #dddddd;
+}
+
+input[type=text],input[type=email],input[type=password]{
+width: 100%;
+    padding: 6px 20px;
+ 
+   
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+ .size {
+ 
+    width: 25%;
+    padding: 6px 20px;
+ 
+   
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 50%;
+    background-color: #ddd;
+    color: #000;
+    padding: 6px 20px;
+    margin: 8px,0;
+    
+	
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+select {
+    width: 102%;
+    
+    color: #000;
+    padding: 6px 20px;
+    margin: 8px,0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+from div.form-action-buttons {
+    text-align: right;
+}
+a {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000ee;
+    margin-left: 4px;
+}
+label.validation-error {
+    color: red;
+    margin-left: 5px;
+}
+.hide {
+    display: none;
+}
+
+</style>
+
+</head>
+<body >
+<br>
+<div align="center" width=25%>
+	<div class=size >
+
+		<div >
+	<div>
+
+					 <form action="#" th:action="@{/dish/{id} (id=${dishs.id})}" th:object="${dishs}" method="post">
+					
+					<h2 align="center" style="color: orange;">Dish Addition</h2>
+
+					<label class="float-left red">Dish Name</label>
+					<div>
+					
+
+						<input type="text"  required="required" th:field="*{dishname}"
+							maxlength="15" data-minlength="4"
+							placeholder="Enter Dish name">
+					</div>
+				
+				
+					<label class="float-left red">Decreption</label>
+					<div>
+						<input type="text" th:field="*{description}" required="required" 
+							placeholder="Enter Decreption">
+					</div>
+				
+					
+					<label class="float-left red">Price</label>
+					<div>
+						<input type="text" th:field="*{price}" required="required"  onkeypress="return /[0-9]/i.test(event.key)"
+							placeholder="Enter price">
+					</div>
+					
+						<label class="float-left red">Dish Type</label>
+					<div>
+
+						<input type="text" th:field="*{type}" data-inline="true"
+							placeholder="Enter type">
+					</div>
+					
+					<label class="float-left red">Submit</label><br>
+					<div>
+					<input type="submit" class="float-left ">
+					</div>
+	</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+

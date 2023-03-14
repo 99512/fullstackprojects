@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="hibernate-with-jsp-crud-operations">
+        <wb-resource deploy-path="/" source-path="/Src" tag="defaultRootSource"/>
+        <property name="context-root" value="hibernate-with-jsp-crud-operations"/>
+        <property name="java-output-path" value="/hibernate-with-jsp-crud-operations/build/classes"/>
+    </wb-module>
+</project-modules>

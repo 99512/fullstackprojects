@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Library Management System</title>
+<style>
+.button {
+	background-color: cornflowerblue;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 15px;
+    margin: 3px ;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.button1 {
+	background-color: cornflowerblue;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    font-size: 15px;
+    margin: 3px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Fine Purpose</h2>
+     <form name="student" method="post" th:action="@{/Fine}">
+    
+  <div class="form-group">
+    <label for="rollno">Rollno</label>
+    <input type="text" placeholder="rollno" name="rollno" class="form-control" id="rollno"
+    		required="required">
+  </div><br>
+ 	<!--  <div class="form-group">
+    	<label for="amount">Amount</label>
+    	<input type="text" placeholder="amount" name="amount" class="form-control" id="amount">
+ 	 </div><br> -->
+ 	 <div class="form-group">
+    	<label for="date">Date</label>
+    	<input type="text" placeholder="date" name="date" class="form-control" id="date"
+    		required="required">
+ 	 </div><br>
+ 	 <div class="form-group">
+    	<label for="reason">Reason</label>
+    	<input type="text" placeholder="reason" name="reason" class="form-control" id="reason"
+    			required="required">
+ 	 </div><br>
+ 	 <div class="form-group">
+    	<label for="status">Status</label>
+    	<input type="text" placeholder="status" name="status" class="form-control" id="status"
+    			required="required">
+ 	 </div><br>
+ 	 <button class="button">Submit</button>
+ 	 <a th:href="@{/}" class="button1">Home</a>
+     </form>
+     </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</body>
+</html>

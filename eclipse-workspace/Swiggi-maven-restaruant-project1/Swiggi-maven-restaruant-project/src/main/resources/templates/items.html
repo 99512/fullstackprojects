@@ -1,0 +1,492 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Food Items</title>
+<link rel="stylesheet" href="items.css">
+<style type="text/css">
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.head {
+  overflow: hidden;
+  background-color: #333;
+}
+.active {
+  background-color:#ada06c;
+  color:#ede9b4;
+}
+.head a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 11px 18px;
+  text-decoration: none;
+}
+.a{
+   float: right;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.head a:hover, .dropdown:hover .dropbtn {
+  background-color: #cab6eb;
+}
+
+.content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .content {
+  display: block;
+}
+
+
+
+
+.show{
+ margin: 0;
+ padding: 0;
+ background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+ height: 100%;
+
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.palce{
+ margin: 0;
+ padding: 0;
+ background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+ height: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.food{
+ width: 70%;
+ height: 90%;
+ background-color: #ffffff;
+ border-radius: 20px;
+ box-shadow: 0px 25px 40px #1687d933;
+}
+.style{
+ margin: auto;
+ width: 90%;
+ height: 15%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.Heading{
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 700;
+ color: #2F3841;
+}
+.Action{
+ font-size: 14px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #E44C4C;
+ cursor: pointer;
+ border-bottom: 1px solid #E44C4C;
+}
+
+
+.Cart-Items{
+ margin: auto;
+ width: 90%;
+ height: 30%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.image-box{
+ width: 15%;
+ text-align: center;
+}
+.about{
+ height: 100%;
+}
+.title{
+ padding-top: 5px;
+ line-height: 10px;
+ font-size: 32px;
+ font-family: ‘Open Sans’;
+ font-weight: 800;
+ color: #202020;
+}
+.subtitle{
+ line-height: 10px;
+ font-size: 18px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #909090;
+}
+
+
+
+.counter{
+ width: 15%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.btn{
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ background-color: #d9d9d9;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+ cursor: pointer;
+}
+.count{
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+}
+
+.prices{
+ height: 100%;
+ text-align: right;
+}
+.amount{
+ padding-top: 20px;
+ font-size: 26px;
+ font-family: ‘Open Sans’;
+ font-weight: 800;
+ color: #202020;
+}
+.save{
+ padding-top: 5px;
+ font-size: 14px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #1687d9;
+ cursor: pointer;
+}
+.remove{
+ padding-top: 5px;
+ font-size: 14px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #E44C4C;
+ cursor: pointer;
+}
+
+hr{
+ width: 66%;
+ float: right;
+ margin-right: 5%;
+}
+.checkout{
+ float: right;
+ margin-right: 5%;
+ width: 28%;
+}
+.total{
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+}
+.Subtotal{
+ font-size: 22px;
+ font-family: ‘Open Sans’;
+ font-weight: 700;
+ color: #202020;
+}
+.itemss{
+ font-size: 16px;
+ font-family: ‘Open Sans’;
+ font-weight: 500;
+ color: #909090;
+ line-height: 10px;
+}
+.total-amount{
+ font-size: 36px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+}
+.button{
+ margin-top: 5px;
+ width: 100%;
+ height: 40px;
+ border: none;
+ background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+ border-radius: 20px;
+ cursor: pointer;
+ font-size: 16px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #202020;
+}
+
+
+
+
+
+
+
+
+
+</style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+
+
+<body>
+<div>
+
+<div class="head">
+		<a href="http://localhost:8080/dashboard" class="active">Home</a> 
+			<a href="http://localhost:8080/restaurants">Restaurants</a>
+		<a href="http://localhost:8080/contactus">Contact us</a>
+		<div class="a">
+			<a class="color" href="http://localhost:8080/login">Login
+				&nbsp;&nbsp;</a>
+		</div>
+		</div>
+
+</div>
+
+	<form th:object="${restaurants}" method="post">
+	
+	
+	
+	
+<div class=show >
+
+	<div class="food">
+		<div class="style">
+			<h3 class="Heading">Shopping Cart</h3>	
+			
+		</div>
+		<div class="Cart-Items">
+			<div class="image-box">
+				<a href="http://localhost:8080/dishAddition"><img
+					src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/tvur6lwwvnd2euflpswm"
+					height="120px" /></a>
+			</div>
+			<div class="about">
+				<br>
+				<h1 class="title">Dosa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</h1>
+				&#x20b9;	250 
+				<br>
+				<!-- <input type="text" th:field="*{name}"> -->
+				<div th:text="*{name}"></div>
+				<h3 class="subtitle" >One Plate</h3>
+				<img
+					src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+					height="30px" />
+			</div>
+			<div class="counter">
+				<input type="button" value="+" id="inc" onclick="incNumber1()" /> <label
+					id="display1">0</label> 
+					<input type="button" value="-" id="dec" onclick="decNumber1()" />
+			</div>
+			<div class="prices">
+			
+			<br><br>
+				<div class="amount">&#x20b9; <label id="displayA">0</label></div>
+				
+			</div>
+		</div>
+		<div class="Cart-Items">
+			<div class="image-box">
+		<a href="http://localhost:8080/dishAddition">
+		<img src="https://www.sandyathome.com/wp-content/uploads/2019/09/gobi-65-rice.jpg"
+					height="120px" /></a>
+			</div>
+			<div class="about">
+				<br>
+				<h1 class="title">Gobi Rice</h1>
+				&#x20b9;	270 
+				<br>
+				<div th:text="*{name}"></div>
+				<h3 class="subtitle" >One Plate</h3>
+				<img
+					src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+					height="30px" />
+			</div>
+			<div class="counter">
+				<input type="button" value="+" id="inc" onclick="incNumber2()" /> <label
+					id="display2">0</label> 
+					<input type="button" value="-" id="dec" onclick="decNumber2()" />
+			</div>
+			<div class="prices">
+			<br><br>
+				<div class="amount">
+				
+					<b>&#x20b9;  <label id="displayB">0</label></b>
+				</div>
+				
+			</div>
+		</div>
+		<div class="Cart-Items">
+			<div class="image-box">
+			<a href="http://localhost:8080/dishAddition">	<img
+					src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwZm9vZHxlbnwwfHwwfHw%3D&w=1000&q=80"
+					height="120px" /></a>
+			</div>
+			<div class="about">
+				<br>
+				<h1 class="title">Full Meals</h1>
+				&#x20b9;	200
+				<br>
+			<div th:text="*{name}"></div>
+				<h3 class="subtitle"onclick="show()">One Plate</h3>
+				<img
+					src="https://www.pngkey.com/png/detail/261-2619381_chitr-veg-symbol-svg-veg-and-non-veg.png"
+					height="30px" />
+			</div>
+			<div class="counter">
+				<input type="button" value="+" id="inc" onclick="incNumber3()" /> <label id="display3">0</label> 
+				
+					<input type="button" value="-" id="dec" onclick="decNumber3()" />
+			</div>
+			
+			<div class="prices">
+			<br><br>
+		
+				<div class="amount">&#x20b9; <label id="displayC">0</label> </div>
+				
+				</div>
+			</div>
+				<hr> 
+ <div class="checkout">
+ <div class="total">
+ <div>
+ <br>
+ <div class="Subtotal">Sub-Total</div>
+ </div>
+ <div class="total-amount">&#x20b9; <label id="displayD">0</label></div>
+ </div>
+<button class="button"  onclick="thisFunction()" ><a href="http://localhost:8080/dashboard">Checkout</a></button>
+ </div>
+		</div>
+		</div>
+	<script src="input.js">
+	
+	</script>
+	
+	<script type="text/javascript">
+	
+	var i = 0;
+
+    function incNumber1() {
+        if (i < 10) {
+            i++;
+        } else if (i = 10) {
+            i = 0;
+        }
+        document.getElementById("display1").innerHTML = i;
+          document.getElementById("displayA").innerHTML = i*250;
+          document.getElementById("displayD").innerHTML = i*250+j*270+k*200;
+    }
+
+    function decNumber1() {
+        if (i > 0) {
+            --i;
+        } else if (i = 0) {
+            i = 10;
+        }
+        document.getElementById("display1").innerHTML = i;
+          document.getElementById("displayA").innerHTML = i*250;
+          document.getElementById("displayD").innerHTML = i*250+j*270+k*200;
+    }
+
+var j=0;
+    function incNumber2() {
+        if (j < 10) {
+            j++;
+        } else if (j = 10) {
+            j = 0;
+        }
+        document.getElementById("display2").innerHTML = j;
+        document.getElementById("displayB").innerHTML = j*270;
+        document.getElementById("displayD").innerHTML = i*250+j*270+k*200;
+        
+    }
+
+    function decNumber2() {
+        if (j > 0) {
+            --j;
+        } else if (j = 0) {
+            j = 10;
+        }
+        document.getElementById("display2").innerHTML = j;
+        document.getElementById("displayB").innerHTML = j*270;
+        document.getElementById("displayD").innerHTML = i*250+j*270+k*200;
+    }
+
+var k=0;
+    function incNumber3() {
+        if (k < 10) {
+            k++;
+        } else if (k = 10) {
+            k = 0;
+        }
+        document.getElementById("display3").innerHTML = k;
+        document.getElementById("displayC").innerHTML = k*200;
+         document.getElementById("displayD").innerHTML = i*250+j*270+k*200;
+    }
+
+    function decNumber3() {
+        if (k > 0) {
+            --k;
+        } else if (k = 0) {
+            k = 10;
+        }
+        document.getElementById("display3").innerHTML = k;
+         document.getElementById("displayC").innerHTML = k*200;
+          document.getElementById("displayD").innerHTML = i*250+j*270+k*200;
+    }
+
+
+function add(){
+	 a=i*250+j*270+k*200;
+	document.getElementById("loki").innerHTML=a;
+}
+
+	function thisFunction() {
+
+			alert("Your order successfully registered")
+		
+	}
+	
+	</script>
+	</form>
+</body>
+
+</html>

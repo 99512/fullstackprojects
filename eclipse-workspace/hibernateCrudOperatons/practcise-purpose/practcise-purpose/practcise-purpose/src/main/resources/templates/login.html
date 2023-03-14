@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Library Management System</title>
+<style>
+.button {
+	background-color: cornflowerblue;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 15px;
+    margin: 3px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Login</h2>
+   <form name="login" method="post" th:action="@{/Login}">
+     <div class="form-group">
+    <label for="email">Enter Your Email</label>
+    <input type="email" placeholder="email" name="email" class="form-control" id="email" 
+    			required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+  </div><br>
+   <div class="form-group">
+    <label for="password">Enter Your Password</label>
+    <input type="password" placeholder="password" name="password" class="form-control" id="password" required="required">
+  </div><br>
+  <button class="button">Submit</button><br>
+  <a href="http://localhost:8080/studentRegister">Create an Account?</a>
+  </form>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </body>
+  </html>
